@@ -27,3 +27,23 @@ docker-compose down
 ```bash
 curl http://localhost:8000/placeholder/users/1
 ```
+
+
+## Configuration
+
+Configuration file is in [`./declarative/kong.yml`](./declarative/kong.yml)
+
+
+```yml
+_format_version: "1.1"
+_transform: true
+
+services:
+  - name: json_placeholder
+    url: "https://jsonplaceholder.typicode.com/"
+    routes:
+      - name: placeholder_route
+        paths:
+          - /placeholder         
+        strip_path: true
+```
